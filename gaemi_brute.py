@@ -45,7 +45,7 @@ def next_lns(sequence: str) -> str:
     Ex. sequence = ["111221"] -> returns "312211"
     """
 
-    lns = ""
+    lns = []
     tracking_c = ""
     count = 0
 
@@ -53,11 +53,13 @@ def next_lns(sequence: str) -> str:
         if tracking_c == "":
             tracking_c = c
         elif tracking_c != c:
-            lns += str(count) + tracking_c
+            lns.append(str(count))
+            lns.append(tracking_c)
             tracking_c = c
             count = 0
         count += 1
 
-    lns += str(count) + tracking_c
+    lns.append(str(count))
+    lns.append(tracking_c)
 
-    return lns
+    return "".join(lns)
